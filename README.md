@@ -1,2 +1,2 @@
 # charades
-AI generated mobile app
+AI generated mobile app.
