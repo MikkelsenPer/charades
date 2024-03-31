@@ -46,8 +46,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             style: TextStyle(fontSize: 18),
           ),
           SizedBox(height: 40),
-          Image.asset('assets/images/image2.png'),
-          SizedBox(height: 40),
           Text(
             'Choose your language:',
             style: TextStyle(fontSize: 18),
