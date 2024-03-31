@@ -1,6 +1,6 @@
 # charades
 
-A new Flutter project.
+A Flutter project created by Gemini (AI).
 
 ## Getting Started
 

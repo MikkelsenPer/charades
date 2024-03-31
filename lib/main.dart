@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:charades_game/screens/welcome_screen.dart';
+import 'package:charades/screens/welcome_screen.dart';
 
 void main() {
   runApp(MyApp());
