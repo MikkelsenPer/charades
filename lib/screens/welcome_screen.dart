@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Add this import for loading text
 import 'package:charades/screens/game_screen.dart';
+import 'package:charades/services/charade_text_service.dart'; // Import the service
 
 class WelcomeScreen extends StatefulWidget {
   @override
@@ -9,19 +9,23 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   String chosenLanguage = 'en'; // Default language
-  String welcomeText = ''; // Initialize for welcome text
+  String welcomeText = 'NA'; // Initialize for welcome text
 
   @override
   void initState() {
     super.initState();
-    loadWelcomeText(); // Load text on startup
+    _loadWelcomeText(); // Load text on startup using async function
   }
 
-  Future<void> loadWelcomeText() async {
-    final text = await rootBundle.loadString('assets/welcome.txt');
-    setState(() {
-      welcomeText = text;
-    });
+  Future<void> _loadWelcomeText() async {
+    try {
+      final text = await CharadeTextService.getWelcomeText(); // Use the new method
+      setState(() {
+        welcomeText = text;
+      });
+    } catch (error) {
+      print('Error loading welcome text: $error'); // Log the error for debugging
+    }
   }
 
   @override
@@ -37,15 +41,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Image.asset('assets/images/image1.png'),
           SizedBox(height: 20),
           Text(
-            'Welcome to Charades!',
+            welcomeText, // Use loaded welcome text
             style: TextStyle(fontSize: 24),
           ),
           SizedBox(height: 20),
-          Text(
-            welcomeText,
-            style: TextStyle(fontSize: 18),
-          ),
-          SizedBox(height: 40),
           Text(
             'Choose your language:',
             style: TextStyle(fontSize: 18),

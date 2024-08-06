@@ -1,1 +1,3 @@
-Welcome to the Charade game. The game is created by use of AI
+Welcome to the Charade game. The game is created by use of AI - that is the app has been created purely by asking Gemini to make all the code.
+The game itself is a simple Charades.
+If you are interesting in the source code you are welcome to check it out on my github account.

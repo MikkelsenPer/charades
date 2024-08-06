@@ -4,19 +4,30 @@ import 'dart:math';
 import 'package:flutter/services.dart';
 
 class CharadeTextService {
-  static Future<String> getCharadeText(String language) async{
+  static Future<String> getCharadeText(String language) async {
+    // Existing method for loading charade text (unmodified)
     try {
       final text = await rootBundle.loadString('assets/charade_text_$language.txt');
-      print(" file");
-      // Process the text content
-      final lines = text.split('\n');  // Split the string by newline character
-      print("lines");
+      final lines = text.split('\n');
       final randomIndex = Random().nextInt(lines.length);
       return lines[randomIndex];
     } on FileSystemException {
-      // Handle potential file system errors (e.g., file not found)
-      print('Error reading charade text file for language: $language');
       return 'Error retrieving charade text.';
+    }
+  }
+
+  static Future<String> getWelcomeText() async {
+    // New method for loading welcome text
+    try {
+      // Assuming the welcome text is in a file named "welcome.txt"
+      print("Starting to load text");
+      final text = await rootBundle.loadString('assets/welcome.txt');
+      print("waited");
+      final lines = text.split('\n');
+      print("Text $lines");
+      return text;
+    } on FileSystemException {
+      return 'Error retrieving welcome text.';
     }
   }
 }
